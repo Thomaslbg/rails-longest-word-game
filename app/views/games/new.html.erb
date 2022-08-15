@@ -1,0 +1,28 @@
+<h1>NEW GAME</h1>
+
+
+
+<ul class="list-group list-group-horizontal">
+  <% @letters.each do |l| %>
+   <li class="list-group-item m-4 bg-light"><h5 class="card-title"><%= l %></h5></li>
+  <% end %>
+</ul>
+
+
+<div class="row row-cols-4 row-cols-md-4 g-1 p-2">
+  <div class="row justify-content-md-center">
+    <div class="col">
+      <div class="card bg-light p-4">
+        <form action="score" method="POST" data-turbo="false">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :letters, @letters %>
+          <div class="mb-3">
+            <label for="input" class="form-label">Your word</label>
+            <input type="input" class="form-control" name="input" id="input" aria-describedby="inputHelp">
+            <div id="inputHelp" class="form-text">Good luck.</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
+</div>
